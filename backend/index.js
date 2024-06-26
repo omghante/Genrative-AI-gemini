@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const app = express();
-const port = 3000;
+const port = 7517;
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 
 // POST endpoint to handle incoming text and generate response
-app.post('/sendText', async (req, res) => {
+app.post('/', async (req, res) => {
   try {
     const { text } = req.body;
     console.log('Received text:', text);
