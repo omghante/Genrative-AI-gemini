@@ -8,18 +8,18 @@ const app = express();
 const PORT = process.env.SERVER_PORT; 
 
 app.use(cors({
-    origin: "http://localhost:5174/",
+    origin: "http://localhost:5173", // Allow requests from this origin
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
     res.status(200).json("Server is running");
 });
 
-app.post("/", async (req, res) => {
+app.post("/sendText", async (req, res) => {
     try {
         const { text } = req.body;
         console.log('Received text:', text);
