@@ -5,10 +5,10 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.SERVER_PORT ; 
+const PORT = process.env.SERVER_PORT; 
 
 app.use(cors({
-    origin: "http://localhost:6173", 
+    origin: "http://localhost:5173", // Allow requests from this origin
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
@@ -24,6 +24,7 @@ app.post("/sendText", async (req, res) => {
         const { text } = req.body;
         console.log('Received text:', text);
 
+      
         const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const result = await model.generateContent(text);
@@ -35,7 +36,7 @@ app.post("/sendText", async (req, res) => {
     }
 });
 
-app.options("*", cors()); 
+app.options("*", cors());
 
 app.listen(PORT, () => {
     console.log(`Server started at port ${PORT}`);
