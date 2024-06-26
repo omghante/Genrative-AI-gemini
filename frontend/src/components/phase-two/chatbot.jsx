@@ -33,7 +33,7 @@ export default function Chatbot() {
 
     setDefaultOpen(!isDefaultOpen);
     try {
-      const response = await axios.post('http://localhost:7517/', {
+      const response = await axios.post('http://localhost:6173/sendText', {
         text: inputText,
       });
       if (response.data.success) {
