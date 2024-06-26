@@ -7,10 +7,9 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.SERVER_PORT; 
 
-const frontendURL = 'https://genrative-ai-gemini-frontend.vercel.app/';
 
 app.use(cors({
-    origin: frontendURL, // Allow requests from this origin
+    origin: "https://genrative-ai-gemini-frontend.vercel.app", // Allow requests from this origin
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
