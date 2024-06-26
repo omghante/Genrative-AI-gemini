@@ -5,7 +5,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.SERVER_PORT; 
+const PORT = process.env.SERVER_PORT || 6173; 
 
 app.use(cors({
     origin: "http://localhost:5174/", // Allow requests from this origin
@@ -15,11 +15,11 @@ app.use(cors({
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
     res.status(200).json("Server is running");
 });
 
-app.post("/sendText", async (req, res) => {
+app.post("/", async (req, res) => {
     try {
         const { text } = req.body;
         console.log('Received text:', text);
